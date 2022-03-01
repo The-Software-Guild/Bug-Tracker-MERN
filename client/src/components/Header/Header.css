@@ -1,0 +1,24 @@
+.header {
+  padding: 1.5rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7dd3fc;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+}
+
+.header > .header-create-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header > .header-create-btns a {
+  margin: 0 0.5rem;
+}
+
+.header > a.logo {
+  font-size: 2em;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}

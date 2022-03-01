@@ -1,0 +1,43 @@
+table {
+  margin: 2rem auto;
+  border: 1px solid #e0e0e0;
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 100%;
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  padding: 8px;
+}
+
+td {
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+/* Styles */
+tr th {
+  background-color: #e7ebf0;
+}
+
+/* Center text in "Actions" column */
+table thead tr th:last-child,
+table tbody tr td:last-child {
+  text-align: center;
+}
+
+/* Hover effects for rows */
+tr {
+  transition: background-color 100ms ease-in-out 0s;
+}
+
+tr:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+table td button {
+  margin-left: 0.5rem;
+}
