@@ -27,7 +27,13 @@ const BugsTable = () => {
         <tbody>
           {bugs.length ? (
             bugs.map(bug => (
-              <tr key={bug._id}>
+              <tr
+                key={bug._id}
+                className={
+                  moment(bug.expirationDate).isSameOrBefore(moment().local().format())
+                    ? 'bug-expired'
+                    : ''
+                }>
                 <td>{bug.title}</td>
                 <td>
                   <i>{bug.description}</i>

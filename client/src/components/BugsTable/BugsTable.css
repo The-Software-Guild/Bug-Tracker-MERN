@@ -5,6 +5,7 @@ table {
   width: 80%;
   max-width: 100%;
   text-align: left;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
 }
 
 th {
@@ -20,7 +21,7 @@ td {
 
 /* Styles */
 tr th {
-  background-color: #e7ebf0;
+  background-color: #7dd3fc;
 }
 
 /* Center text in "Actions" column */
@@ -31,13 +32,14 @@ table tbody tr td:last-child {
 
 /* Hover effects for rows */
 tr {
+  background-color: #f0f9ff;
   transition: background-color 100ms ease-in-out 0s;
 }
 
-tr:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+tr.bug-expired {
+  background-color: #fca5a5;
 }
 
-table td button {
-  margin-left: 0.5rem;
+tbody tr:hover {
+  filter: brightness(0.9);
 }
