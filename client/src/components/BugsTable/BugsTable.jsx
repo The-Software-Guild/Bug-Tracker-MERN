@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 import './BugsTable.css'
 
@@ -34,7 +35,9 @@ const BugsTable = () => {
                     ? 'bug-expired'
                     : ''
                 }>
-                <td>{bug.title}</td>
+                <td>
+                  <Link to={`/bug/${bug._id}`}>{bug.title}</Link>
+                </td>
                 <td>
                   <i>{bug.description}</i>
                 </td>
