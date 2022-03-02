@@ -1,9 +1,12 @@
-import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import moment from 'moment'
 import Form from '../../components/Form/Form'
 
-const AddBug = () => {
+const EditBug = () => {
+  const navigate = useNavigate()
+  const { bugId } = useParams()
+
   const [bugData, setBugData] = useState({
     title: '',
     description: '',
@@ -14,25 +17,23 @@ const AddBug = () => {
   const [assignees, setAssignees] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/users', {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    fetch('http://localhost:5000/users')
       .then(res => res.json())
       .then(data => {
         const assigneeList = data.users.map(user => ({ id: user._id, name: user.name }))
         setAssignees(assigneeList)
       })
-  }, [])
 
-  const navigate = useNavigate()
+    fetch(`http://localhost:5000/bugs/${bugId}`)
+      .then(res => res.json())
+      .then(data => setBugData(data.bug))
+  }, [])
 
   const handleSubmit = e => {
     e.preventDefault()
 
-    fetch('http://localhost:5000/bugs', {
-      method: 'POST',
+    fetch(`http://localhost:5000/bugs/${bugId}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -55,7 +56,7 @@ const AddBug = () => {
   }
 
   return (
-    <Form formTitle='Add a new bug' handleSubmit={handleSubmit}>
+    <Form formTitle={`Edit: ${bugData.title}`} handleSubmit={handleSubmit}>
       <label htmlFor='title'>
         Title
         <input
@@ -63,6 +64,7 @@ const AddBug = () => {
           name='title'
           id='bug-title'
           minLength={2}
+          defaultValue={bugData.title}
           onChange={handleChange}
           required
         />
@@ -74,14 +76,20 @@ const AddBug = () => {
           name='description'
           id='bug-description'
           rows={3}
+          defaultValue={bugData.description}
           onChange={handleChange}
           required></textarea>
       </label>
 
       <label htmlFor='assignee'>Assignee</label>
-      <select name='assignee' id='bug-assignee' onChange={handleChange} required>
+      <select
+        name='assignee'
+        id='bug-assignee'
+        defaultValue={bugData.assignee}
+        onChange={handleChange}
+        required>
         {assignees.map(assignee => (
-          <option key={assignee.id} value={assignee.id}>
+          <option key={assignee.id} value={assignee.id} selected={assignee.id === bugData.assignee}>
             {assignee.name}
           </option>
         ))}
@@ -94,6 +102,7 @@ const AddBug = () => {
           name='createdAt'
           id='bug-created-date'
           min={moment().local().format('YYYY-MM-DDThh:mm')}
+          defaultValue={moment(bugData.createdAt).local().format('YYYY-MM-DDThh:mm')}
           onChange={handleChange}
           required
         />
@@ -106,14 +115,15 @@ const AddBug = () => {
           name='expirationDate'
           id='bug-expire-date'
           min={moment(bugData.createdAt).local().add(3, 'days').format('YYYY-MM-DDThh:mm')}
+          defaultValue={moment(bugData.expirationDate).local().format('YYYY-MM-DDThh:mm')}
           onChange={handleChange}
           required
         />
       </label>
 
-      <button type='submit'>Create Bug</button>
+      <button type='submit'>Submit Edit</button>
     </Form>
   )
 }
 
-export default AddBug
+export default EditBug
