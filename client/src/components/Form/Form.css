@@ -1,0 +1,56 @@
+.form-container {
+  margin: auto;
+  width: 25%;
+}
+
+.form-wrapper > form {
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #f0f9ff;
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+}
+
+.form-wrapper > form > label {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.form-wrapper > form input {
+  padding: 0.5em;
+  border: 1px solid #4b5563;
+}
+
+.form-wrapper > form select {
+  width: 100%;
+}
+
+.form-wrapper > form textarea {
+  min-height: 2rem;
+  max-height: 10rem;
+  resize: vertical;
+}
+
+.form-wrapper > form button {
+  margin: auto;
+  padding: 0.75rem 1rem;
+  display: block;
+  border-radius: 6px;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+}
+
+.form-wrapper > form button:hover {
+  background-color: #e5e7eb;
+}
+
+.form-wrapper > form button:active,
+.form-wrapper > form button:focus {
+  background-color: #d1d5db;
+}

@@ -1,0 +1,37 @@
+.bug-container {
+  margin: 0 10%;
+  padding: 1rem 5rem;
+}
+
+.bug-container .bug-header {
+  display: flex;
+}
+
+.bug-container .bug-header .bug-action-btns {
+  margin-left: 0.5em;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bug-container .bug-header .bug-action-btns svg {
+  padding: 0.5rem;
+  width: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: ease-in 50ms;
+}
+
+.bug-container .bug-header .bug-action-btns svg:hover,
+.bug-container .bug-header .bug-action-btns svg:focus,
+.bug-container .bug-header .bug-action-btns svg:active {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.bug-container .bug-header .bug-action-btns .bug-delete-btn {
+  color: #b91c1c;
+}
+
+.bug-container .bug-header .bug-action-btns .bug-edit-btn {
+  color: #0369a1;
+}
